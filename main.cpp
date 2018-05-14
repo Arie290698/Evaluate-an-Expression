@@ -36,3 +36,16 @@ int PrecedenceOperator(char Operator){
 	}
 	return precedence;
 }
+
+
+int CheckPrecedence(char Operator1, char Operator2){
+	int Operator1Predence = PrecedenceOperator(Operator1);
+	int Operator2Predence = PrecedenceOperator(Operator2);
+
+	if(Operator1Predence == Operator2Predence){
+		if(Operator1) return false;
+		else return true;
+	}
+	return Operator1Predence > Operator2Predence ?  true: 
+		false;
+}
