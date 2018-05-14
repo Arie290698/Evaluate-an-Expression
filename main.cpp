@@ -49,3 +49,42 @@ int CheckPrecedence(char Operator1, char Operator2){
 	return Operator1Predence > Operator2Predence ?  true: 
 		false;
 }
+
+
+string Transform(string Q){
+	stack<char> S;
+	string P = ""; 
+	for(int i = 0;i< Q.length();i++) {
+		if(Q[i] == ' ' || Q[i] == ',') continue; 
+		
+		else if(OperandFound(Q[i])){
+			P+=Q[i];
+		}
+		
+		else if (Q[i] == '(') {
+			S.push(Q[i]);
+		}
+		
+		else if(Q[i] == ')') {
+			while(!S.empty() && S.top() !=  '(') {
+				P+=S.top();
+				S.pop();
+			}
+			S.pop();
+		}
+		
+		else if(OperatorFound(Q[i])) {
+			while(!S.empty() && S.top() != '(' && CheckPrecedence(S.top(),Q[i])){
+				P+=S.top();
+				S.pop();
+			}
+			S.push(Q[i]);
+		}
+	}
+	
+	while(!S.empty()) {
+		P+=S.top();
+		S.pop();
+	}
+	return P;
+}
