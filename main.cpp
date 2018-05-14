@@ -11,3 +11,10 @@ bool OperandFound(char Character) {
 	return false;
 }
 
+
+bool OperatorFound(char Character){
+	if(Character == '*' ||  Character == '/' || Character == '%' || Character == '+' || Character== '-')
+		return true;
+
+	return false;
+}
