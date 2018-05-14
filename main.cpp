@@ -88,3 +88,13 @@ string Transform(string Q){
 	}
 	return P;
 }
+
+
+int main() {
+	string Q; 
+	char* expression; 
+	cout<<"Masukkan Infix : ";
+	getline(cin,Q);
+	string P = Transform(Q);
+	cout<<P;
+}
